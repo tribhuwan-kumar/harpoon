@@ -28,25 +28,21 @@ vim.api.nvim_create_autocmd("FileType", {
 
     callback = function()
         -- Open harpoon file choice in useful ways
-        --
-        -- vertical split (control+v)
-        vim.keymap.set("n", "<C-V>", function()
+        vim.keymap.set("n", "s", function()
             local curline = vim.api.nvim_get_current_line()
             local working_directory = vim.fn.getcwd() .. "/"
             vim.cmd("vs")
             vim.cmd("e " .. working_directory .. curline)
         end, { buffer = true, noremap = true, silent = true })
 
-        -- horizontal split (control+x)
-        vim.keymap.set("n", "<C-x>", function()
+        vim.keymap.set("n", "b", function()
             local curline = vim.api.nvim_get_current_line()
             local working_directory = vim.fn.getcwd() .. "/"
             vim.cmd("sp")
             vim.cmd("e " .. working_directory .. curline)
         end, { buffer = true, noremap = true, silent = true })
 
-        -- new tab (control+t)
-        vim.keymap.set("n", "<C-t>", function()
+        vim.keymap.set("n", "t", function()
             local curline = vim.api.nvim_get_current_line()
             local working_directory = vim.fn.getcwd() .. "/"
             vim.cmd("tabnew")
